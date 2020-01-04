@@ -63,7 +63,7 @@ var btn=document.getElementById("btnStop");
 stopEnabled(btn);
 
 //assign the active player to the console
-var showPlayer= document.getElementById("showPlayer");
+var showPlayer= document.getElementById('showPlayer');
 showPlayer.innerHTML=activePlayer; 
 showPlayer.style.color="green";
 }
@@ -96,7 +96,7 @@ function stopGame() {
     startEnabled(btn); //enable the start button since the game is now stopped
     var btn= document.getElementById('btnStop');
     btnDisabled(btn);//disable the stop button since the game is now stopped
-    var showPlayer = document.getElementById('showPlayer');
+    var showPlayer = document.getElementById('showPlayer')
     showPlayer.innerHTML="Game Stopped";
     showPlayer.style.color='red';
 
@@ -114,11 +114,11 @@ document.getElementById("boardState").innerHTML="";
 }
 
 function showGameMsg() {
-    document.getElementById("gameMsgBox").style.display="block";
+    document.getElementById('gameMsgBox').style.display='block';
 }
 function hideGameMsg() {
     clearMsg() 
-    document.getElementById("gameMsgBox").style.display="none";
+    document.getElementById('gameMsgBox').style.display="none";
 }
 function writeMsg(txt){
     showGameMsg();
@@ -134,12 +134,12 @@ function saveSettings(){
     var p1Index= document.getElementById("player1").selectedIndex; 
     var p1Selected= document.getElementById("player1").options; 
     var p2Index= document.getElementById("player2").selectedIndex; 
-    var p2Selected= document.getElementById('player2').options;
+    var p2Selected= document.getElementById("player2").options;
     if (p1Selected[p1Index].text == p2Selected[p2Index].text) {
         alert("Error - Player 1 and Player 2 cannot both be assigned as: "+p1Selected[p1Index].text)
     } else {
-        document.getElementById("p1Display").innerHTML=p1Selected[p1Index].text;
-        document.getElementById("p2Display").innerHTML=p2Selected[p2Index].text; 
+        document.getElementById('p1Display').innerHTML=p1Selected[p1Index].text;
+        document.getElementById('p2Display').innerHTML=p2Selected[p2Index].text; 
     }
 }
 //this function return's the currently assigned avater for each player
@@ -181,7 +181,7 @@ function avatarPlaced(){
 function check(info,square) {
     for (var i in info) {
         var tempInfo= info[i].charAt(0);
-        if (tempInfo = square) {
+        if (tempInfo == square) {
             return tempInfo;
         }
     }
@@ -211,13 +211,13 @@ function checkForWinCon() {
         squareArray.push(info[i].charAt(0));
     }
     checkWinCon1(info,squareArray);
-    checkWinCon2(info, squareArray);
-    checkWinCon3(info, squareArray);
+    checkWinCon2(info,squareArray);
+    checkWinCon3(info,squareArray);
     checkWinCon4(info,squareArray);
-    checkWinCon5(info, squareArray);
-    checkWinCon6(info, squareArray);
+    checkWinCon5(info,squareArray);
+    checkWinCon6(info,squareArray);
     checkWinCon7(info,squareArray);
-    checkWinCon8(info, squareArray);
+    checkWinCon8(info,squareArray);
     check4Tie();
 }
 
@@ -542,7 +542,7 @@ function checkWinCon1(info,squareArray){
             var match2Avatar = info[i].charAt(1);
     }
 }
-if (match0Avatar != undefined && match1Avatar !==undefined && match2Avatar!= undefined){
+if (match0Avatar != undefined && match1Avatar !=undefined && match2Avatar!= undefined){
     if(match0Avatar==match1Avatar &&  match0Avatar == match2Avatar){
         winDetected = "win";
         winner(winDetected,winCon1);
@@ -566,15 +566,14 @@ function checkWinCon2(info,squareArray){
             var match5Avatar = info[i].charAt(1);
     }
 }
-if (match3Avatar != undefined && match4Avatar !==undefined && match5Avatar!= undefined){
+if (match3Avatar != undefined && match4Avatar != undefined && match5Avatar!= undefined){
     if(match3Avatar==match4Avatar &&  match3Avatar == match5Avatar){
         winDetected = "win";
+            }
+        }
         winner(winDetected,winCon2);
-        return; 
     }
-}
-winner (winDetected,winCon2);
-}
+
 function checkWinCon3(info,squareArray){
     var winDetected = "on"; 
     var winCon3 = [6,7,8]; 
@@ -589,15 +588,15 @@ function checkWinCon3(info,squareArray){
             var match8Avatar = info[i].charAt(1);
     }
 }
-if (match6Avatar != undefined && match7Avatar !==undefined && match8Avatar!= undefined){
+if (match6Avatar != undefined && match7Avatar != undefined && match8Avatar!= undefined){
     if(match6Avatar==match7Avatar &&  match6Avatar == match8Avatar){
         winDetected = "win";
-        winner(winDetected,winCon3);
-        return; 
+        }
     }
+    winner(winDetected,winCon3);
 }
-winner (winDetected,winCon3);
-}
+
+
 function checkWinCon4(info,squareArray){
     var winDetected = "on"; 
     var winCon4 = [0,3,6]; 
@@ -612,15 +611,14 @@ function checkWinCon4(info,squareArray){
             var match6Avatar = info[i].charAt(1);
     }
 }
-if (match0Avatar != undefined && match3Avatar !==undefined && match6Avatar!= undefined){
+if (match0Avatar != undefined && match3Avatar !=undefined && match6Avatar!= undefined){
     if(match0Avatar==match3Avatar &&  match0Avatar == match6Avatar){
         winDetected = "win";
-        winner(winDetected,winCon4);
-        return; 
     }
 }
 winner (winDetected,winCon4);
 }
+
 function checkWinCon5(info,squareArray){
     var winDetected = "on"; 
     var winCon5 = [1,4,7]; 
@@ -635,11 +633,9 @@ function checkWinCon5(info,squareArray){
             var match7Avatar = info[i].charAt(1);
     }
 }
-if (match1Avatar != undefined && match4Avatar !==undefined && match7Avatar!= undefined){
+if (match1Avatar != undefined && match4Avatar !=undefined && match7Avatar!= undefined){
     if(match1Avatar==match4Avatar &&  match1Avatar == match7Avatar){
         winDetected = "win";
-        winner(winDetected,winCon5);
-        return; 
     }
 }
 winner (winDetected,winCon5);
@@ -659,11 +655,9 @@ function checkWinCon6(info,squareArray){
             var match8Avatar = info[i].charAt(1);
     }
 }
-if (match2Avatar != undefined && match5Avatar !==undefined && match8Avatar!= undefined){
+if (match2Avatar != undefined && match5Avatar != undefined && match8Avatar!= undefined){
     if(match2Avatar==match5Avatar &&  match2Avatar == match8Avatar){
         winDetected = "win";
-        winner(winDetected,winCon6);
-        return; 
     }
 }
 winner (winDetected,winCon6);
@@ -682,15 +676,14 @@ function checkWinCon7(info,squareArray){
             var match8Avatar = info[i].charAt(1);
     }
 }
-if (match0Avatar != undefined && match4Avatar !==undefined && match8Avatar!= undefined){
+if (match0Avatar != undefined && match4Avatar != undefined && match8Avatar!= undefined){
     if(match0Avatar==match4Avatar &&  match0Avatar == match8Avatar){
         winDetected = "win";
-        winner(winDetected,winCon7);
-        return; 
     }
 }
-winner (winDetected,winCon8);
+winner (winDetected,winCon7);
 }
+
 function checkWinCon8(info,squareArray){
     var winDetected = "on"; 
     var winCon8 = [2,4,6]; 
@@ -705,11 +698,9 @@ function checkWinCon8(info,squareArray){
             var match6Avatar = info[i].charAt(1);
     }
 }
-if (match2Avatar != undefined && match4Avatar !==undefined && match6Avatar!= undefined){
+if (match2Avatar != undefined && match4Avatar != undefined && match6Avatar!= undefined){
     if(match2Avatar==match4Avatar &&  match2Avatar == match6Avatar){
         winDetected = "win";
-        winner(winDetected,winCon8);
-        return; 
     }
 }
 winner (winDetected,winCon8);
