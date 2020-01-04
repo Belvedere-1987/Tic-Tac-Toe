@@ -173,7 +173,7 @@ function avatarPlaced(){
     if (activePlayer == "Player 1"){
         showPlayer.innerHTML="Player 2";
     } else {
-        showPlayer.innerHTML="player 1";
+        showPlayer.innerHTML="Player 1";
     }
     check4Tie();
 }
