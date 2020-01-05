@@ -41,7 +41,8 @@ function rollForTurn() {
         setTimeout(function(){txt1= txt1 + "Player 1 wins, please choose a square.";}, 2000);
         setTimeout(function() {writeMsg(txt1);}, 2000);
     } else if (pOne < pTwo) {
-        first= "Player 2"
+        first= "Player 2";
+
         setTimeout(function(){txt1= txt1 + "Player 2 wins, please choose a square.";}, 2000);
         setTimeout(function() {writeMsg(txt1);}, 2000);
     }
@@ -205,7 +206,7 @@ function checkForWinCon() {
     var target= document.getElementById("boardState");
     var info= target.innerHTML; 
     info= info.substring(1); 
-    info= info.split(" , "); 
+    info= info.split(","); 
     info.sort(); 
     for (var i in info){
         squareArray.push(info[i].charAt(0));
@@ -233,29 +234,29 @@ function check4Tie() {
         setTimeout(function() {stopGame();}, 3000);
     }
 }
-
-function winnner(winDetected,winCon){
-    if (winDetected== "win"){
-        var showme = winDetected; 
-        var activePlayer = document.getElementById("showPlayer").innerHTML;
-        var txt2 = "That's three in a row, "+activePlayer+" wins!";
-        writeMsg(txt2);
-        var btn= document.getElementById('btnStart');
-        startEnabled(btn);
-        var btn = document.getElementById("btnStop");
-        btnDisabled(btn);
-        document.getElementById("showPlayer").innerHTML="Game Stopped";
-        glowboard(winCon);
-    }
+function winner(winDetected,winCon) {
+	if (winDetected == "win") {
+		var showme = winDetected;
+		var activePlayer = document.getElementById('showPlayer').innerHTML;
+		var txt2 = "That's three in a row, "+activePlayer+" wins!";
+		writeMsg(txt2);
+		var btn = document.getElementById('btnStart');
+		startEnabled(btn); // enable the start button since the game is now stopped
+		var btn = document.getElementById('btnStop');
+		btnDisabled(btn); // disable the stop button since the game is now stopped
+		document.getElementById('showPlayer').innerHTML = "Game Stopped";
+		glowBoard(winCon); // call function to make the gameboard pulse with colors
+	} 
 }
+
 function glowBoard(pos) {
     var index0 = pos[0];
-    var index1= pos[1];
-    var index2= pos[2];
-    var squares= document.getElementsByClassName('square')
-    for (var i=0; i<squares.length;i++){
+    var index1 = pos[1];
+    var index2 = pos[2];
+    var squares = document.getElementsByClassName('square')
+    for (var i=0;i<squares.length;i++){
         if (i==index0) {
-            var bg1= squares[i];
+            var bg1=squares[i];
             blink();
             winSound();
             setTimeout(function() {bg1.style.backgroundColor = "rgb(244,179,66)";}, 100);
@@ -352,7 +353,7 @@ function square1Animate(){
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -372,7 +373,7 @@ function square2Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -392,7 +393,7 @@ function square3Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -412,7 +413,7 @@ function square4Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -432,7 +433,7 @@ function square5Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -452,7 +453,7 @@ function square6Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -472,7 +473,7 @@ function square7Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -492,7 +493,7 @@ function square8Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -512,7 +513,7 @@ function square9Animate() {
              }else if (paintAvatar=="X"){
                  animateX(selected);
              }
-             var currentMove = ", "+square+paintAvatar; 
+             var currentMove = ","+square+paintAvatar; 
              recordMove(currentMove);
              checkForWinCon(); 
              avatarPlaced(square,paintAvatar);
@@ -703,5 +704,5 @@ if (match2Avatar != undefined && match4Avatar != undefined && match6Avatar!= und
         winDetected = "win";
     }
 }
-winner (winDetected,winCon8);
+winner(winDetected,winCon8);
 }
