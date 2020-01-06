@@ -15,7 +15,7 @@ function rollForTurn() {
     var minimum= 1; 
     var maximum= 11; 
     var first= "";
-    var txt1=""; 
+    var txt1= ""; 
     for (var i=0; i < 2; i++) {
         ranNum= Math.floor(Math.random()*(maximum-minimum)+minimum);
         xArray.push(ranNum);
@@ -52,7 +52,7 @@ function rollForTurn() {
 function startGame() {
     var xTurn= 0; 
     activePlayer= rollForTurn(); 
-    if (activePlayer=="") {// if it was a tie, then reroll
+    if (activePlayer== "") {// if it was a tie, then reroll
         activePlayer= rollForTurn();
 }
 setTimeout(function() {hideGameMsg();}, 4000);
@@ -88,7 +88,7 @@ function startEnabled(btn){
     btn.style.color="#fff";
     btn.style.border="2px solid rgb(0, 153, 0)"; 
     btn.style.backgroundColor = "rgb(57,230,0)";
-    btn.disable= false; 
+    btn.disabled= false; 
 }
 //when the user indicates, stop the current game and reset game
 function stopGame() {
@@ -123,11 +123,11 @@ function hideGameMsg() {
 }
 function writeMsg(txt){
     showGameMsg();
-    document.getElementById('gameMsg').innerHTML=txt;
+    document.getElementById('gameMsg').innerHTML= txt;
 }
 //this function will clear the text from the message console
 function clearMsg(){
-    document.getElementById("gameMsg").innerHTML="";
+    document.getElementById("gameMsg").innerHTML= "";
 }
 //this function is for the player configurations panel and checks the 
 //proposed avatar assignments and prevents them from being the same. 
@@ -146,7 +146,7 @@ function saveSettings(){
 //this function return's the currently assigned avater for each player
 function getAvatars() {
     var p1Avatar= document.getElementById("p1Display").innerHTML;
-    var p2Avatar=document.getElementById("p2Display").innerHTML; 
+    var p2Avatar= document.getElementById("p2Display").innerHTML; 
     var avatarArray= [p1Avatar,p2Avatar]; 
     return avatarArray;
 }
@@ -163,10 +163,10 @@ function determineAvatar() {
     return paintAvatar;
 }
 
-function avatarPlaced(){
+function avatarPlaced() {
     var parseText= document.getElementById('gameMsg').innerHTML; 
     var showPlayer = document.getElementById('showPlayer');//select the current element to memory; 
-    if (parseText == "That's three in a row, Player 1 wins!"|| parseText=="That's three in a row, Player 2 wins!"){
+    if (parseText == "That's three in a row, Player 1 wins!" || parseText=="That's three in a row, Player 2 wins!"){
         showPlayer.innerHTML="Game Stopped"; 
         showPlayer.style.color="red";
     }
@@ -202,11 +202,11 @@ function recordMove(currentMove) {
 }
 
 function checkForWinCon() {
-    var squareArray=[];
+    var squareArray= [];
     var target= document.getElementById("boardState");
     var info= target.innerHTML; 
     info= info.substring(1); 
-    info= info.split(","); 
+    info= info.split(','); 
     info.sort(); 
     for (var i in info){
         squareArray.push(info[i].charAt(0));
@@ -227,7 +227,7 @@ function check4Tie() {
     boardState = boardState.substring(1);
     boardState= boardState.split(",");
     var check = document.getElementById("gameMsg").innerHTML; 
-    if (boardState.length >= 9 && check != "That's three in a row, Player 1 wins!" && check != "that's three in a row, Player 2 wins!") {
+    if (boardState.length >= 9 && check != "That's three in a row, Player 1 wins!" && check != "That's three in a row, Player 2 wins!") {
         var txt1= "Oh no! Nobody wins, it was a tie!";
         tieSound(); 
         writeMsg(txt1); 
